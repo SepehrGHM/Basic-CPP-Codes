@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+// Function to compute the triangular number
+int triangularNumber(int n) {
+    return n * (n + 1) / 2;
+}
+
+int main() {
+    int n;
+
+    // Prompt user for input and validate it
+    do {
+        cout << "Enter a positive integer: ";
+        cin >> n;
+        if (n <= 0) {
+            cout << "Invalid input! Please enter a positive integer.\n";
+        }
+    } while (n <= 0);
+
+    // Generate and print the pyramid
+    for (int i = 1; i <= n; ++i) { //controls the number of num in row
+        for (int j = i; j >= 1; --j) { //controls the number of columns
+            cout << triangularNumber(j) << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+//The outer loop (i) controls how many numbers are shown in each row.
+//The inner loop (j) assigns (prints) the numbers in each row.
