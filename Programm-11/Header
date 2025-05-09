@@ -9,7 +9,7 @@ using namespace std;
 
 class Department {
 private:
-    // Double checked with prof to use static since in question doesn't ask to set id only get it
+  
     static int next_department_id;
     int department_id;
     string name;
