@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+
+
+int oarray[5];
+
+int Minfunc(int arr[], int size) {
+  int min=arr[0];
+
+  for (int i = 1; i < size; i++) {
+    if (arr[i]<min) {
+      min=arr[i];
+    }
+  }
+  return min;
+}
+
+
+int Maxfunc(int arr[], int size) {
+  int max=arr[0];
+
+  for (int i = 1; i < size; i++) {
+    if (arr[i]>max) {
+      max=arr[i];
+    }
+  }
+  return max;
+}
+
+void SwapMinMax(int arr[], int size) {
+  int minindex=0;
+  int maxindex=0;
+  for (int i = 1; i < size; i++) {
+    if (arr[i]<arr[minindex]) {
+      minindex=i;
+    }
+    if (arr[i]>arr[maxindex]) {
+      maxindex=i;
+    }
+  }
+  int temp=arr[minindex];
+  arr[minindex]=arr[maxindex];
+  arr[maxindex]=temp;
+}
+
+
+int main() {
+
+  cout<< "enter 5 distinct integer values to store in the array:\n";
+  for (int i = 0; i < 5; i++) {
+    cin>> oarray[i];
+  }
+cout << endl;
+
+
+  cout<<"Original array is:\n";
+  for (int i = 0; i < 5; i++) {
+    cout << oarray[i] << " ";
+  }
+cout << endl;
+
+
+cout <<"min is: "<< Minfunc(oarray,5)<<endl;
+  cout <<"max is: "<< Maxfunc(oarray,5)<< endl;
+
+  SwapMinMax(oarray,5);
+  cout << endl;
+
+  cout<<"Array after swapping:\n";
+  for (int i = 0; i < 5; i++) {
+    cout << oarray[i] << " ";
+  }
+cout << endl;
+  return 0;
+}
+
+
+
+
+
+
+
+
+
