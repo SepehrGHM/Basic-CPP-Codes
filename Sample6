@@ -1,0 +1,144 @@
+
+#include <iostream>
+using namespace std;
+
+
+//COMMENT: I used C-style for arrays in this question and used void as it works properly for arrays.
+
+
+//Function for sorting
+void sortVec(int vec[], int vec_size) {
+    int holder = 0;
+    for (size_t i = 0; i < vec_size; i++) {
+        for (size_t j = 0; j < vec_size - i - 1; j++) {
+            if (vec[j] > vec[j + 1]) {
+                holder = vec[j];
+                vec[j] = vec[j + 1];
+                vec[j + 1] = holder;
+            }
+        }
+    }
+}
+
+//Function for highest4
+void highestFour(const int vec[], int size) {
+    cout << "Four highest grades: ";
+    for (size_t i = size - 4; i < size; i++) {
+        cout << vec[i] << "\t";
+    }
+    cout << endl;
+}
+
+//Function for lowest4
+void lowestFour(const int vec[], int size) {
+    cout << "Four lowest grades: ";
+    for (size_t i = 0; i < 4; i++) {
+        cout << vec[i] << "\t";
+    }
+    cout << endl;
+}
+
+//Function for Average
+void averageGrade(const int vec[], int size) {
+    float average = 0;
+    for (size_t i = 0; i < size; i++) {
+        average += vec[i];
+    }
+    average = average/size;
+    cout << "Average grade is: " << average << endl;
+}
+
+//Function for Median
+void medianGrade(const int vec[], int size) {
+    if (size % 2 == 0) {
+        double median = static_cast<double> (vec[size / 2 - 1] + vec[size / 2]) / 2;
+        cout << "Median grade is: " << median;
+    } else {
+        cout << "Median grade is: " << vec[size / 2];
+    }
+    cout << endl;
+}
+
+//Function for NOA
+void numberOfA(const int vec[], int size) {
+    int numberOfA = 0;
+    for (size_t i = 0; i < size; i++) {
+        if (vec[i] >= 90) {
+            numberOfA++;
+        }
+    }
+    cout << "Number of A grades (grades equal or more than 90): " << numberOfA << endl;
+}
+
+//Function for NOB
+void numberOfB(const int vec[], int size) {
+    int numberOfB = 0;
+    for (size_t i = 0; i < size; i++) {
+        if (vec[i] >= 80 && vec[i] < 90) {
+            numberOfB++;
+        }
+    }
+    cout << "Number of B grades (grades between 80 (inclusive) and 90): " << numberOfB << endl;
+}
+
+//Function for NOC
+void numberOfC(const int vec[], int size) {
+    int numberOfC = 0;
+    for (size_t i = 0; i < size; i++) {
+        if (vec[i] >= 65 && vec[i] < 80) {
+            numberOfC++;
+        }
+    }
+    cout << "Number of C grades (grades between 65 (inclusive) and 80): " << numberOfC << endl;
+}
+
+//Function for NOD
+void numberOfD(const int vec[], int size) {
+    int numberOfD = 0;
+    for (size_t i = 0; i < size; i++) {
+        if (vec[i] >= 50 && vec[i] < 65) {
+            numberOfD++;
+        }
+    }
+    cout << "Number of D grades (grades between 50 (inclusive) and 65): " << numberOfD << endl;
+}
+
+//Function for NOF
+void numberOfF(const int vec[], int size) {
+    int numberOfF = 0;
+    for (size_t i = 0; i < size; i++) {
+        if (vec[i] < 50) {
+            numberOfF++;
+        }
+    }
+    cout << "Number of F grades (grades less than 50): " << numberOfF << endl;
+}
+
+//Output-Showing Result
+int main() {
+
+    int number_of_students;
+    cout << "Enter the number of students (min 4): ";
+    cin >> number_of_students;
+
+    int student_grades[number_of_students];
+
+    cout << "Enter the students' grades ranging from 0-100 (ex: 60 90 45): ";
+    for (int i = 0; i < number_of_students; i++) {
+        cin >> student_grades[i];
+    }
+
+    sortVec(student_grades, number_of_students);
+    highestFour(student_grades, number_of_students);
+    lowestFour(student_grades, number_of_students);
+    averageGrade(student_grades, number_of_students);
+    medianGrade(student_grades, number_of_students);
+    numberOfA(student_grades, number_of_students);
+    numberOfB(student_grades, number_of_students);
+    numberOfC(student_grades, number_of_students);
+    numberOfD(student_grades, number_of_students);
+    numberOfF(student_grades, number_of_students);
+    cout << endl;
+
+    return 0;
+}
