@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+int main() {
+
+    int units;
+    char type;
+    double bill;
+    char greenPlan;
+
+
+    cout << "Enter user type (R for Residential, C for Commercial, I for Industrial): ";
+    cin >> type;
+    cout << "Enter number of units consumed: ";
+    cin >> units;
+
+    if (units > 500) {
+        if (type == 'R') {
+            bill = units * 0.50;
+            if (units > 700) {
+                bill += 50;
+            }
+        }
+        else if (type == 'C') {
+            bill = units * 0.60;
+
+            cout << "Are you subscribed to a green energy plan? (y/n): ";
+            cin >> greenPlan;
+
+            if (greenPlan == 'y' || greenPlan == 'Y') {
+                bill *= 0.90;
+            }
+        }
+        else if (type == 'I') {
+            bill = units * 0.75;
+            if (units > 1000) {
+                bill += 100;
+            }
+        }
+        else {
+            cout << "Invalid user type!" << endl;
+            return 0;
+        }
+    }
+    else if (units >= 200 && units<=500) {
+        if (type == 'R') {
+            bill = units * 0.40;
+        }
+        else if (type == 'C') {
+            bill = units * 0.55;
+        }
+        else if (type == 'I') {
+            bill = units * 0.70;
+        }
+        else {
+            cout << "Invalid user type!" << endl;
+            return 0;
+        }
+    }
+    else {
+        if (type == 'R') {
+            bill = 50;
+        }
+        else if (type == 'C') {
+            bill = 75;
+        }
+        else if (type == 'I') {
+            bill = 100;
+        }
+        else {
+            cout << "Invalid user type!" << endl;
+            return 0;
+        }
+    }
+
+    cout << "Your total utility bill is: $" << bill << endl;
+
+    return 0;
+}
