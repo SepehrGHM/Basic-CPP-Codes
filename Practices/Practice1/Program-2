@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+    int age;
+    int anime;
+    int choice;
+    int lucky_number1, lucky_number2 , lucky_number3;
+    int i1,i2,i3;
+
+    cout << "What is your choice? (1 or 2):" << endl;
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            cout<<"Get your lucky numbers! share your age and the number of unwatched anime series on your Netflix whatch-list:\n";
+        cin>>age>>anime;
+
+        if (age <18 || age > 92) {
+            cout <<"you are not the right age to play!";
+            break;
+        } else {
+            if (age < 40) {
+                lucky_number1 = anime % 10;
+                lucky_number2 = (age*anime)%100;
+                lucky_number3 = 5*ceil(age/3.68);
+                cout <<"Your lucky numbers are:\n"<<lucky_number1 <<"\n"<<lucky_number2<<"\n"<<lucky_number3<<endl;
+            } else if (age>=40) {
+                lucky_number1 = age+8;
+                lucky_number2 = abs(anime-age);
+                lucky_number3 = (7*static_cast<int>(floor(sqrt(anime))))%100;
+                cout <<"Your lucky numbers are:\n"<<lucky_number1 <<"\n"<<lucky_number2<<"\n"<<lucky_number3<<endl;
+            }
+            break;
+
+            case 2:
+                cout<< "manually enter your numbers:\n";
+            cin>>i1>>i2>>i3;
+            if (i1>99||i2>99||i3>99||i1<1||i2<1||i3<1) {
+                cout<<"wrong range!";
+                break;
+            }
+            if (i1>i2 && i2>i3) {
+                cout<<i1<<"\n"<<i2<<"\n"<<i3;
+            } else if (i1<i2 && i2>i3) {
+                cout<<i2<<"\n"<<i3<<"\n"<<i1;
+            } else if (i1<i2 && i2<i3) {
+                cout<<i3<<"\n"<<i2<<"\n"<<i1;
+            } else if (i1>i3 && i2<i3) {
+                cout<<i1<<"\n"<<i3<<"\n"<<i2;
+            } else if (i2>i1 && i1>i3) {
+                cout<<i2<<"\n"<<i1<<"\n"<<i3;
+            } else if (i3>i1 && i1>i2) {
+                cout<<i3<<"\n"<<i1<<"\n"<<i2;
+            } else{}
+            break;
+        }
+    }
+    return 0;
+}
