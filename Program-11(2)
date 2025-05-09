@@ -1,0 +1,66 @@
+
+#include "department.h"
+#include <iostream>
+using namespace std;
+
+int Department::next_department_id = 1;
+
+Department::Department(string deptName, string deptHistory, vector<Employee> depEmployees) {
+    department_id = next_department_id++;
+    name = deptName;
+    history = deptHistory;
+    employees = depEmployees;
+}
+
+Department::Department() {
+    department_id = next_department_id++;
+    name = "";
+    history = "";
+    employees = {};
+}
+
+void Department::set_department_name(string deptName) {
+    name = deptName;
+}
+
+void Department::set_department_history(string deptHistory) {
+    history = deptHistory;
+}
+
+int Department::get_department_id() {
+    return department_id;
+}
+
+string Department::get_department_name() {
+    return name;
+}
+
+string Department::get_department_history() {
+    return history;
+}
+
+void Department::add_employee(const Employee& emp) {
+    if (employees.size() < 25)
+        employees.push_back(emp);
+    else
+        cout << "Department is full. Cannot add more than 25 employees to a department." << endl;
+}
+
+
+bool Department::search_for_employee(int empID) {
+    for (auto& emp : employees) {
+        if (emp.get_id() == empID)
+            return true;
+    }
+    return false;
+}
+
+void Department::display_all_employees() {
+    for (auto& emp : employees) {
+        cout << emp.get_full_name() << " (ID: " << emp.get_id() << ")" << endl;
+    }
+}
+
+int Department::get_employee_count() {
+    return employees.size();
+}
