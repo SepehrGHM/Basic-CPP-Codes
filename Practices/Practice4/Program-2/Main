@@ -1,0 +1,47 @@
+#include "Header.h"
+
+
+int main() {
+    string type1, type2;
+    int power1, power2, voltage1, voltage2;
+
+    // Input for first charger
+    cout << "Enter type of first charger: ";
+    cin >> type1;
+    cout << "Enter power (kW) of first charger: ";
+    cin >> power1;
+    cout << "Enter voltage of first charger: ";
+    cin >> voltage1;
+
+    // Create charger objects
+    Charger charger1(type1, power1, voltage1);
+
+    // Input for second charger
+    cout << "Enter type of second charger: ";
+    cin >> type2;
+    cout << "Enter power (kW) of second charger: ";
+    cin >> power2;
+    cout << "Enter voltage of second charger: ";
+    cin >> voltage2;
+
+    // Create charger objects
+    Charger charger2(type2, power2, voltage2);
+
+    // Display charger information
+    cout << "\nFirst Charger Information:" << endl;
+    charger1.printinfo();
+    cout << "Charger Level: " << charger1.Level_evaluate() << endl;
+
+    cout << "\nSecond Charger Information:" << endl;
+    charger2.printinfo();
+    cout << "Charger Level: " << charger2.Level_evaluate() << endl;
+
+    // Check if chargers are exchangeable
+    if (charger1.equals(charger2)) {
+        cout << "\nBoth chargers are exchangeable (Same Type and Voltage)." << endl;
+    } else {
+        cout << "\nChargers are NOT exchangeable." << endl;
+    }
+
+    return 0;
+}
