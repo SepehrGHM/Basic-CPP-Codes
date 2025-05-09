@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+
+
+int oarry[10];
+int aarray[5];
+int result;
+
+int get_summation(int x) {
+    result =oarry[x]+oarry[9-x];
+    return result;
+}
+
+int main() {
+    cout <<"please enter 10 integers in order \n";
+    for (int i = 0; i < 10; i++) {
+        cin >> oarry[i];
+    }
+    cout <<"you entered the following list of integers: \n";
+    for (int i = 0; i < 10; i++) {
+        cout << oarry[i] << " ";
+    }
+cout << endl;
+
+    cout <<"the content of auxiliary array is \n";
+    for (int i = 0; i < 5; i++) {
+        aarray[i]= get_summation(i);
+        cout << aarray[i] << " ";
+    }
+    }
+
+
+
