@@ -1,0 +1,83 @@
+
+#include <iostream>
+#include <string>
+#include "employee.h"
+#include "department.h"
+
+using namespace std;
+
+void search_result(Department &dept, int searching_id) {
+    cout << "Searching for employee with id " << to_string(searching_id) << ": " <<endl;
+    if(dept.search_for_employee(searching_id) == 1) {
+        cout << "Employee found" << endl;
+    }else {
+        cout << "Employee not found" << endl;
+    }
+}
+
+int main() {
+    string department_name;
+    string department_history;
+    const int testing_number = 5;
+
+    cout << "Enter the department name: ";
+    getline(cin, department_name);
+    cout << "Enter the department history: ";
+    getline(cin, department_history);
+
+    Department dept(department_name, department_history, {});
+    vector<Employee> employees;
+
+    for (int i = 0; i < testing_number; i++) {
+        string firstName, lastName, dateOfBirth, address, telephoneNumber;
+        int yearHired, areaCode;
+        double salary;
+
+        cout << "\nEnter details for Employee " << (i + 1)<< endl;
+        cout << "First Name: ";
+        getline(cin, firstName);
+        cout << "Last Name: ";
+        getline(cin, lastName);
+        cout << "Date of Birth (DD-MM-YYYY): ";
+        getline(cin, dateOfBirth);
+        cout << "Address: ";
+        getline(cin, address);
+        cout << "Year Hired: ";
+        cin >> yearHired;
+        cout << "Salary: ";
+        cin >> salary;
+        cout << "Telephone Area Code: ";
+        cin >> areaCode;
+        cout << "Telephone Number: ";
+        cin >> telephoneNumber;
+        cin.ignore();
+
+
+        Employee emp(firstName, lastName, dateOfBirth, address, yearHired, salary, areaCode, telephoneNumber);
+        employees.push_back(emp);
+        dept.add_employee(emp);
+    }
+
+    cout << "\nDepartment Information\n";
+    cout << "Department Name: " << dept.get_department_name() << endl;
+    cout << "Department ID: " << dept.get_department_id() << endl;
+    cout << "Department History: " << dept.get_department_history() << endl;
+    cout << "Number of Employees in the Department: " << employees.size() << endl;
+
+    cout <<endl;
+
+    cout << "List of Employees: "<<endl;
+    dept.display_all_employees();
+
+    cout <<endl;
+
+    search_result(dept, 21);
+    cout << endl;
+
+    search_result(dept, 2);
+    cout << endl;
+
+    cout <<endl;
+
+    return 0;
+}
