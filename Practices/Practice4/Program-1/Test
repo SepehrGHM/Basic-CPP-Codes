@@ -1,0 +1,65 @@
+#include "LAB5.1.h"
+#include <iostream>
+using namespace std;
+
+
+// Default constructor
+//all things before {} is const!!!
+//these variables remain empty as they are const until we use set function and set them
+Car::Car() : Type(""), Price(0), Capacity(0) {
+
+}
+
+// Parameterized constructor
+//Car::Car(string type, int price, int capacity) : Type(type), Price(price), Capacity(capacity) {}
+Car::Car(string type, int price, int capacity) {
+    Type = type;
+    Price = price;
+    Capacity = capacity;
+}
+
+// Accessor methods
+string Car::getType () {
+    return Type;
+}
+int Car::getPrice() {
+    return Price;
+}
+int Car::getCapacity() {
+    return Capacity;
+}
+
+// Mutator methods
+void Car::setType(string type) {
+    Type = type;
+}
+
+void Car::setPrice(int price) {
+    Price = price;
+}
+
+void Car::setCapacity(int capacity) {
+    Capacity = capacity;
+}
+
+// Equals function: checks if two cars have the same Type and Capacity
+//for the follow, there is two ways, both are correct. check it out
+bool Car::equals( Car& car2) {
+    return (Type == car2.getType() && Capacity == car2.getCapacity());
+    return (Type == car2.getType() && Capacity == car2.Capacity);
+}
+
+// Classify function: determines car segment based on price
+string Car::classify()  {
+    if (Price <= 25000)
+        return "Compact Car";
+    else if (Price <= 40000)
+        return "Economy Car";
+    else
+        return "Luxury Car";
+}
+
+// Print information about the car
+void Car::printInfo()  {
+    std::cout << Type << " car with $" << Price << " value has the capacity of " << Capacity << " passengers.\n";
+}
