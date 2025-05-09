@@ -1,0 +1,90 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+
+{
+
+    //define
+    double value1, value2, value3, value4, value5;
+    char unit1, unit2, unit3, unit4, unit5;
+    double EQ1, EQ2, EQ3, EQ4, EQ5;
+
+
+    //value input
+    cout<<"Enter values:\n";
+    cin>> value1>>value2>>value3>>value4>>value5;
+
+    //unit unout
+    cout<<"Enter units (K or G):\n";
+    cin>> unit1>> unit2>> unit3>> unit4>> unit5;
+
+    //1
+    if (unit1=='K'){
+        EQ1 =  value1*1000;
+    } else {
+        EQ1= value1/1000;
+    }
+
+    //2
+    if (unit2=='K'){
+        EQ2 =  value2*1000;
+    } else {
+        EQ2= value2/1000;
+    }
+
+    //3
+    if (unit3=='K'){
+        EQ3 =  value3*1000;
+    } else {
+        EQ3= value3/1000;
+    }
+
+    //4
+    if (unit4=='K'){
+        EQ4 =  value4*1000;
+    } else {
+        EQ4= value4/1000;
+    }
+
+    //5
+    if (unit5=='K'){
+        EQ5 =  value5*1000;
+    } else {
+        EQ5= value5/1000;
+    }
+
+
+    //output
+    cout << setw(20)<< left << "values:"<<
+            setw(20)<< left << "units:" <<
+                         left<< "Equivalent:\n";
+
+    cout<< setw(20)<< left<< value1<<
+           setw(20)<< left<< unit1<<
+                        left<< EQ1<<"\n";
+
+    cout<< setw(20)<< left<<  value2<<
+           setw(20)<< left<<  unit2<<
+                        left<<  EQ2<<"\n";
+
+    cout<< setw(20)<< left<< value3<<
+           setw(20)<< left<<  unit3<<
+                        left<<  EQ3<<"\n";
+
+    cout<< setw(20)<< left<< value4<<
+           setw(20)<< left<<  unit4<<
+                        left<<  EQ4<<"\n";
+
+    cout<< setw(20)<< left<<  value5<<
+           setw(20)<< left<<  unit5<<
+                        left<<  EQ5<<"\n";
+
+    return 0;
+
+}
+
+//no setw(20) for last column of each row
+
+
+
