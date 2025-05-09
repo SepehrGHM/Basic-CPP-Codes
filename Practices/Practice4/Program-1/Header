@@ -1,0 +1,37 @@
+#ifndef 
+#define 
+#include <string>
+using namespace std;
+
+class Car {
+
+private:
+    string Type;
+    int Price;
+    int Capacity;
+
+public:
+    // Default constructor
+    Car();
+
+    // Parameterized constructor
+    Car(string type, int price, int capacity);
+
+    // Accessor methods
+    string getType();
+    int getPrice();
+    int getCapacity();
+
+    // Mutator methods
+    void setType(string type);
+    void setPrice(int price);
+    void setCapacity(int capacity);
+
+    // Other member functions
+    bool equals(Car& car2);
+    string classify();
+    void printInfo();
+};
+
+
+#endif 
