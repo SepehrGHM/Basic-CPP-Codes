@@ -1,0 +1,81 @@
+
+#include <iostream>
+using namespace std;
+
+
+//COMMENT: I used C-style for arrays in this question and used void as it works properly for arrays.
+
+
+//2x2 Matrix det Function
+int det(int matrix[2][2]) {
+    return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
+}
+
+//2x2 Matrix add Function
+void addArrays(int matrix1[2][2], int matrix2[2][2], int result[2][2]) {
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            result[i][j] = matrix1[i][j] + matrix2[i][j];
+        }
+    }
+}
+
+//2x2 Matrix multp Function
+void multArrays(int matrix1[2][2], int matrix2[2][2], int result[2][2]) {
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            result[i][j] = matrix1[i][0] * matrix2[0][j] + matrix1[i][1] * matrix2[1][j];
+        }
+    }
+}
+
+//2x2 Matrix showing Function
+void displayArrays(int matrix[2][2], const string& msg) {
+    cout << msg << endl;
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+//Output-Showing Result
+int main() {
+    int matrix1[2][2], matrix2[2][2], result[2][2];
+
+   //Input Matrix1
+    cout << "Please enter numbers for a two dimensional array (2x2): \n";
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            cin >> matrix1[i][j];
+        }
+    }
+
+    //Output Matrix1
+    displayArrays(matrix1, "Your matrix is:");
+
+    //Output Det Matrix1
+    cout << "Determinant of your matrix is: " << det(matrix1) << "\n";
+
+    //Input Matrix2
+    cout << "Please enter numbers for a second two dimensional array (2x2):\n";
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            cin >> matrix2[i][j];
+        }
+    }
+
+    //Output Matrix2
+    displayArrays(matrix2, "Your second matrix is:");
+
+    //Output Added Matrices
+    addArrays(matrix1, matrix2, result);
+    displayArrays(result, "Result of your two matrices added together: ");
+
+    //Output Mult Matrices
+    multArrays(matrix1, matrix2, result);
+    displayArrays(result, "Result of your two matrices multiplied together: ");
+
+    return 0;
+}
