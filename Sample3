@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int bn;
+    int hex;
+    cout << "Enter 5-bit binary number: ";
+    cin >> bn;
+
+
+    int d1 = bn / 10000;             // 1 digit(right)
+    int d2 = (bn / 1000) % 10;       // 2 digit
+    int d3 = (bn / 100) % 10;        // 3 digit
+    int d4 = (bn / 10) % 10;         // 4 digit
+    int d5 = bn % 10;                // 5 digit(left)
+
+
+
+    if ((d1 == 0 || d1 == 1) &&
+        (d2 == 0 || d2 == 1) &&
+        (d3 == 0 || d3 == 1) &&
+        (d4 == 0 || d4 == 1) &&
+        (d5 == 0 || d5 == 1)) {
+
+        if (bn < 0 || bn > 11111) {
+            cout << "Invalid binary number!";
+        } else {}
+
+        } else {
+            cout << "Invalid binary number!";
+            return 0;
+        }
+
+
+    int decimal = (d1 * 16) + (d2 * 8) + (d3 * 4) + (d4 * 2) + (d5 * 1);
+    int decimal2=(d2 * 8) + (d3 * 4) + (d4 * 2) + (d5 * 1);
+    int remainder = decimal2%16;
+
+
+    if (decimal >=0 && decimal <= 9) {
+        hex = decimal;
+        cout << bn<<"b="<<hex<<"h";
+    } else if (decimal==10) {
+        cout<<bn<<"b=Ah";
+    } else if (decimal==11) {
+        cout<<bn<<"b=Bh";
+    } else if (decimal==12) {
+        cout<<bn<<"b=Ch";
+    } else if (decimal==13) {
+        cout<<bn<<"b=Dh";
+    } else if (decimal==14) {
+        cout<<bn<<"b=Eh";
+    } else if (decimal==15) {
+        cout<<bn<<"b=Fh";
+    }else if (decimal>=16) {
+        if (remainder >=0 && remainder <= 9) {
+            cout<<bn<<"b=1"<<remainder<<"h";
+        } else if (remainder==10) {
+            cout<<bn<<"b=1Ah";
+        }else if (remainder==11) {
+            cout<<bn<<"b=1Bh";
+        }else if (remainder==12) {
+            cout<<bn<<"b=1Ch";
+        }else if (remainder==13) {
+            cout<<bn<<"b=1Dh";
+        }else if (remainder==14) {
+            cout<<bn<<"b=1Eh";
+        }else if (remainder==15) {
+            cout<<bn<<"b=1Fh";
+        }else{}
+    } else{}
+
+    return 0;
+}
