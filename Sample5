@@ -1,0 +1,108 @@
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+//function1
+
+void f1(unsigned int lower, unsigned int upper) {
+
+    int nums_in_line = 0;
+
+    for (unsigned int i=lower; i<=upper; i++) {
+
+        if (i%3==0 || i%5==0) {
+            nums_in_line++;
+            cout<< i<< " ";
+        }
+
+        if (nums_in_line%7==0 && nums_in_line!=0) {
+            cout<< "\n";
+            nums_in_line=0;
+        }
+    }
+}
+
+//power_function (Without using Cmath Lib)
+
+int power(int exp) {
+    int result=1;
+
+    for (int i=0; i<exp; i++) {
+        result *=3;
+    }
+    return result;
+}
+
+//function2
+
+void f2(unsigned int lower, unsigned int upper, unsigned int limit, unsigned int &result) {
+
+    unsigned int powers_sum={0};
+
+    for (int i=lower; i<=upper; i++) {
+        powers_sum+=power(i);
+    }
+
+    unsigned int valuesmin=min(powers_sum, limit);
+    result=valuesmin;
+}
+
+//function3
+
+double f3(unsigned int lower, unsigned int upper) {
+    double sum{};
+    for (int i=lower; i<=upper; i++) {
+        sum+=1.0/i;
+    }
+    return sum;
+}
+
+//interaction,input,output
+
+int main() {
+
+    char choice;
+    unsigned int lower, upper, limit, result;
+    double f2result;
+
+    cout<< "Enter the lower bound: ";
+    cin>> lower;
+
+    cout<< "Enter the upper bound: ";
+    cin>> upper;
+
+    cout<< "Enter the limit: ";
+    cin>> limit;
+
+    cout<< "Choose your function (a/b/c): ";
+    cin>> choice;
+
+    switch (choice) {
+
+        //function1
+        case 'a':
+            f1(lower, upper);
+        break;
+
+        //function2
+        case 'b':
+            f2(lower, upper, limit, result);
+        cout<< result<< "\n";
+        break;
+
+        //function3
+        case 'c':
+            f2result = f3(lower, upper);
+
+        //limit to 8 int
+        cout<< setprecision(8)<< f2result<< "\n";
+        break;
+
+        //invalid_function
+        default:
+            cout<< "Invalid operation! \n";
+        break;
+
+    }
+}
