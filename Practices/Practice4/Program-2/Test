@@ -1,0 +1,64 @@
+#include "Header.h"
+
+
+// Default Constructor
+Charger::Charger() {
+    Type = "";
+    Power = 0;
+    Voltage = 0;
+}
+
+// Parameterized Constructor
+Charger::Charger(string type, int power, int voltage) {
+    Type = type;
+    Power = power;
+    Voltage = voltage;
+}
+
+// Accessor Methods
+string Charger::getType() {
+    return Type;
+}
+
+int Charger::getPower() {
+    return Power;
+}
+
+int Charger::getVoltage() {
+    return Voltage;
+}
+
+// Mutator Methods
+void Charger::setType(string type) {
+    Type = type;
+}
+
+void Charger::setPower(int power) {
+    Power = power;
+}
+
+void Charger::setVoltage(int voltage) {
+    Voltage = voltage;
+}
+
+// Level Evaluate Function
+string Charger::Level_evaluate() {
+    if (Power <= 3700) {
+        return "Level 1 charger";
+    } else if (Power > 3700 && Power <= 22000) {
+        return "Level 2 charger";
+    } else {
+        return "Level 3 charger";
+    }
+}
+
+// Equals Function
+bool Charger::equals(Charger other) {
+    return (Type == other.getType() && Voltage == other.getVoltage());
+}
+
+// Print Information Function
+void Charger::printinfo() {
+    cout << Type << " charger with " << Power << " kW charging power using the voltage of "
+         << Voltage << " volt." << endl;
+}
