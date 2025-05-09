@@ -1,0 +1,48 @@
+#include "LAB5.1.h"
+#include <iostream>
+
+int main() {
+    std::string type1, type2;
+    int price1, price2, capacity1, capacity2;
+
+    // Input details for first car
+    std::cout << "Enter details for the first car:\n";
+    std::cout << "Type: ";
+    std::cin >> type1;
+    std::cout << "Price: ";
+    std::cin >> price1;
+    std::cout << "Capacity: ";
+    std::cin >> capacity1;
+
+    // Create car objects
+    Car car1(type1, price1, capacity1);
+
+    // Input details for second car
+    std::cout << "\nEnter details for the second car:\n";
+    std::cout << "Type: ";
+    std::cin >> type2;
+    std::cout << "Price: ";
+    std::cin >> price2;
+    std::cout << "Capacity: ";
+    std::cin >> capacity2;
+
+    // Create car objects
+    Car car2(type2, price2, capacity2);
+
+    // Display car information
+    std::cout << "\nCar Information:\n";
+    car1.printInfo();
+    std::cout << "Category: " << car1.classify() << "\n\n";
+
+    car2.printInfo();
+    std::cout << "Category: " << car2.classify() << "\n\n";
+
+    // Compare the two cars
+    if (car1.equals(car2)) {
+        std::cout << "The two cars are similar.\n";
+    } else {
+        std::cout << "The two cars are different.\n";
+    }
+
+    return 0;
+}
