@@ -1,0 +1,42 @@
+#ifndef 
+#define 
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Charger {
+private:
+    string Type;
+    int Power;
+    int Voltage;
+
+public:
+    // Default Constructor
+    Charger();
+
+    // Parameterized Constructor
+    Charger(string type, int power, int voltage);
+
+    // Accessor Methods
+    string getType();
+    int getPower();
+    int getVoltage();
+
+    // Mutator Methods
+    void setType(string type);
+    void setPower(int power);
+    void setVoltage(int voltage);
+
+    // Level Evaluate Function
+    string Level_evaluate();
+
+    // Equals Function
+    bool equals(Charger other);
+
+    // Print Information Function
+    void printinfo();
+};
+
+#endif
+
+
