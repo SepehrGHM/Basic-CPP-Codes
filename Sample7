@@ -1,0 +1,56 @@
+
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+//COMMENT: in here I use std::array, we can use C-style, but we need a fix value (like 256 in this example) to prevent overflow
+
+
+//Function for taking string and put in vector
+vector<char> str_to_vec(string str){
+    vector<char> vec = {};
+    for (int c = 0; c < str.length(); c++)
+    {
+        vec.push_back(str[c]);
+    }
+    return vec;
+}
+
+string vec_to_str(vector<char> &vec){
+    string str(vec.begin(), vec.end());
+    return str;
+}
+
+//Check if is Palindrome or not
+bool testPalindrome(vector<char> &str, int start_index = 0){
+    int end_index = str.size() - 1 - start_index;
+
+    if (start_index >= end_index){
+        return true;
+    }
+
+    if (str[start_index] != str[end_index]){
+        return false;
+    }
+
+    return testPalindrome(str, start_index + 1);
+}
+
+//Output-Showing Result
+int main(){
+    string my_string;
+    cout<<"Please enter a word / sentence: ";
+    getline(cin,my_string);
+
+    vector<char> my_string_as_vectore = str_to_vec(my_string);
+
+    bool result = testPalindrome(my_string_as_vectore);
+    if(result == 1) {
+        cout << "Your word / sentence is palindrome!" <<endl;
+    }else {
+        cout << "Your word / sentence is not palindrome" <<endl;
+    }
+    return 0;
+}
