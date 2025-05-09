@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+
+int oarray[10];
+int auxarray[10];
+const int SIZE=10;
+
+int separateeven(int arr[], int aux[]) {
+    int count=0;
+    for (int i = 0; i < SIZE; i++) {
+    if (arr[i] % 2 == 0) {
+        aux[count] = arr[i];
+        count++;
+        }
+    }
+    return count;
+}
+
+void separateodd(int arr[], int aux[], int ecount) {
+    int index=ecount;
+    for (int i = 0; i < 10; i++) {
+        if (arr[i] % 2 != 0) {
+            aux[index] = arr[i];
+            index++;
+        }
+    }
+}
+
+
+int main() {
+
+    cout<<"Please enter 10 integers in order:\n"<<endl;
+    for(int i=0;i<10;i++) {
+        cin>>oarray[i];
+    }
+int ecount=separateeven(oarray,auxarray);
+    separateodd(oarray,auxarray,ecount);
+    cout<<"The content of auxiliary array is: "<<endl;
+    for(int i=0;i<10;i++) {
+        cout<<auxarray[i]<<" ";
+    }
+
+    cout<<endl;
+    return 0;
+}
