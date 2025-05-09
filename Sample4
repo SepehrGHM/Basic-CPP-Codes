@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+
+//Asking name
+
+    string name;
+    cout << "What is your name? ";
+    cin >> name;
+    cout << "Well " << name << ", welcome to the Ice Cream Cone Drawing Program.\n";
+
+    int num_cones = 0;
+    char choice;
+
+//Asking if user wants to use the program
+
+    do {
+        cout << "Do you want me to draw a simple ice cream cone for you? (y/n) ";
+        cin >> choice;
+        if (choice != 'y') break;
+
+//taking width + validating width
+
+        int width;
+        int attempts = 0;
+
+        while (attempts < 3) {
+            cout << "Please enter a number for the width of the cone (must be a multiple of 4 and bigger than 3): ";
+            cin >> width;
+            if (width > 4 && width % 4 == 0) break;
+            cout << "You enter "<<width<< " for the width. Not valid width!.\n";
+            attempts++;
+        }
+
+//limiting attempts
+
+        if (attempts == 3) {
+            cout << "It seems you are having trouble entering a valid width. Program ends now.\n";
+            return 0;
+        }
+
+//drawing cone
+
+    //Stars
+
+        int stars = 2;
+        int firstLine = 1;
+        while (stars <= width) {
+            int lines = firstLine;
+            for (int l = 0; l < lines; l++) {
+                cout << string((width - stars) / 2, ' ') << string(stars, '*') << "\n";
+            }
+            firstLine = 2;
+            stars += 4;
+        }
+
+    //Spaces
+
+        int spaces = 0;
+        int underscores = width - 2;
+        while (underscores >= 0) {
+            cout << string(spaces, ' ') << "\\" << string(underscores, '_') << "/\n";
+            spaces++;
+            underscores -= 2;
+        }
+
+        num_cones++;
+
+//finishing program
+
+    } while (true);
+
+    cout << "Hope you like your " << num_cones << " ice cream cone(s).\n";
+    return 0;
+}
